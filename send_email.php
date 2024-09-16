@@ -1,17 +1,29 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $to = "hanavanilla20@gmail.com"; // Ubah dengan alamat email penerima
-    $from = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    // Get form data
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
-    $headers = "From: $from\r\n";
 
-    if (mail($to, $subject, $message, $headers)) {
+    // Define the recipient email
+    $to = "hanavanilla20@gmail.com"; // Replace with the email address where you want to receive the feedback
+
+    // Create the email headers
+    $headers = "From: " . $email . "\r\n";
+    $headers .= "Reply-To: " . $email . "\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+    // Prepare the email body
+    $body = "<h2>New Feedback from Aisha's Studio</h2>";
+    $body .= "<p><strong>Email:</strong> {$email}</p>";
+    $body .= "<p><strong>Subject:</strong> {$subject}</p>";
+    $body .= "<p><strong>Message:</strong><br>{$message}</p>";
+
+    // Send the email
+    if (mail($to, $subject, $body, $headers)) {
         echo "Email sent successfully!";
     } else {
-        echo "Failed to send email.";
+        echo "Failed to send the email.";
     }
-} else {
-    echo "Invalid request.";
 }
 ?>
