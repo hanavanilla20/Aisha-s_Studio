@@ -10,7 +10,7 @@
             padding-top: 80px;
             font-family: 'Arial', sans-serif;
             background-color: #F4F4F9;
-            
+            overflow-x: hidden;
         }
 
         header {
@@ -87,66 +87,47 @@
         nav ul li:hover ul {
             display: block;
         }
-
-        .profile {
-            padding: 50px;
-            max-width: 800px;
-            margin: 0 auto;
+        
+        .email-form {
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
             background-color: #FFF;
             border-radius: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .profile img {
-            float: left;
-            margin-right: 20px;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        .email-form input, .email-form textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 10px;
+            border-radius: 8px;
+            border: 1px solid #DFD3C3;
         }
-
-        .profile p {
-            text-align: justify;
-            padding: 15px;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #555;
+        
+        .email-form button {
+            background-color: coral;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
         }
-
-        .social-media {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
+        
+        .email-form button:hover {
+            background-color: #ff7f50;
         }
-
-        .social-media a {
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        .social-media a img {
-            width: 32px;
-            height: 32px;
-            transition: transform 0.3s ease;
-        }
-
-        .social-media a img:hover {
-            transform: scale(1.2);
-        }
-
+        
         footer {
             background-color: #DFD3C3;
             padding: 20px;
             text-align: center;
-            margin-top: 20px;
             bottom: 0;
             left: 0;
             width: 100%;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
         }
-
+        
         footer p {
             margin: 0;
             font-size: 14px;
@@ -181,7 +162,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#"> HOME </a>
+                    <a href="index.html"> HOME </a>
                     <ul>
                         <li><a href="profile.html"> About Aisha </a></li>
                     </ul>
@@ -211,25 +192,19 @@
         </nav>
     </header>
 
-    <div class="profile">
-        <img src="aisha.jpg" alt="Profile Photo"> <br/><br/>
-        <h1> Aisha Oktaviadini </h1> <br/>
-        <p>Mahasiswa tahun ketiga Politeknik Negeri Jakarta, program studi D3 Penerbitan (Jurnalistik). Saya memiliki pengalaman dalam implementasi teknik observasi dan wawancara, pembuatan film pendek, perencanaan konten di sosial media, serta kemampuan mengedit foto dan video. Saya juga merupakan seseorang yang adaptif, komunikatif, dan solutif serta berpengalaman dalam menangani permasalahan yang berkaitan dengan media sosial dan divisi hubungan masyarakat. Saat ini, saya sedang mencari kesempatan untuk berkarir di bidang media, jurnalistik, dan hubungan masyarakat. Kemampuan yang saya miliki adalah mampu merespon secara cepat terhadap informasi yang beredar, mampu berkomunikasi sehingga menimbulkan ide atau gagasan baru, dan dapat beradaptasi kepada lingkungan baru.</p>
-        
-        <!-- Social Media Links -->
-        <div class="social-media">
-            <a href="http://instagram.com/ashviadnn/">
-                <img src="instagram.svg" alt="Instagram">
-            </a>
-            <a href="https://wa.me/+6281210852303">
-                <img src="whatsapp.svg" alt="Twitter">
-            </a>
-            <a href="https://www.linkedin.com/in/aisha-oktaviadini/">
-                <img src="linkedin.svg" alt="LinkedIn">
-            </a>
-        </div>
+    <div class="email-form">
+        <h3> Contact Me </h3>
+        <form action="send_email.php" method="POST">
+            <label for="email"> Your Email: </label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="subject"> Subject: </label><br>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="message"> Message: </label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+            <button type="submit"> Send Email </button>
+        </form>
     </div>
-
+    
     <footer>
         <p>&copy; 2024 Aisha's Studio. All rights reserved.</p>
     </footer>
